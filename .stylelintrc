@@ -1,0 +1,12 @@
+{
+  "extends": ["stylelint-config-standard", "stylelint-config-recommended-scss"],
+  "rules": {
+    "at-rule-empty-line-before": [null,
+      "except": ["first-nested"]
+    ],
+    "declaration-empty-line-before": null,
+    "block-closing-brace-newline-after": null,
+    "indentation": "tab",
+    "no-descending-specificity": null
+  }
+}

@@ -1,0 +1,178 @@
+//
+// Export tools
+//
+
+.export-tools {
+	.btn-secondary {
+		background-origin: border-box;
+		outline: 1px solid transparent; // Prevent rendering issue on iOS (thin gap)
+
+		&:focus {
+			.keyboard-user & {
+				box-shadow: none; // Use padding as focus state (no gradients in box-shadows possible)
+				padding: ($btn-padding-y-xl + 2px) ($btn-padding-x-xl + 2px);
+				margin: -2px;
+
+				&:hover {
+					box-shadow: 0 4px 4px $btn-box-shadow-color;
+				}
+			}
+		}
+	}
+
+	.btn-xl {
+		@media (max-width: ($bp-sm - 1px)) {
+			padding-left: $btn-padding-x-lg;
+			padding-right: $btn-padding-x-lg;
+
+			&:focus {
+				.keyboard-user & {
+					padding: ($btn-padding-y-xl + 2px) ($btn-padding-x-lg + 2px);
+				}
+			}
+		}
+	}
+
+	.copy-to-clipboard {
+		background-image:
+			linear-gradient(
+				to right,
+				$btn-secondary-color,
+				mix($violet, $btn-secondary-color, 79%)
+			);
+		background-clip: border-box;
+		position: relative;
+
+		&:hover:not(:disabled) {
+			background-image:
+				linear-gradient(
+					to right,
+					lighten($btn-secondary-color, 4%),
+					lighten(mix($violet, $btn-secondary-color, 79%), 4%)
+				);
+		}
+
+		&:active:not(:disabled) {
+			background-image:
+				linear-gradient(
+					to right,
+					darken($btn-secondary-color, 8%),
+					darken(mix($violet, $btn-secondary-color, 79%), 8%)
+				);
+		}
+	}
+
+	.dropdown {
+		.dropdown-toggle {
+			background-image:
+				linear-gradient(
+					to right,
+					mix($violet, $btn-secondary-color, 79%),
+					$violet
+				);
+			position: relative;
+
+			&:hover:not(:disabled) {
+				background-image:
+					linear-gradient(
+						to right,
+						lighten(mix($violet, $btn-secondary-color, 79%), 4%),
+						lighten($violet, 4%)
+					);
+			}
+
+			&:active:not(:disabled) {
+				background-image:
+					linear-gradient(
+						to right,
+						darken(mix($violet, $btn-secondary-color, 79%), 8%),
+						darken($violet, 8%)
+					);
+			}
+
+			&::before {
+				content: "";
+				position: absolute;
+				top: 10px;
+				left: -2px;
+				bottom: 10px;
+				width: 1px;
+				background: rgba(255, 255, 255, 0.8);
+				transition: opacity $btn-transition;
+			}
+		}
+
+		&.show {
+			.dropdown-toggle {
+				&,
+				&:hover {
+					background-image:
+						linear-gradient(
+							to right,
+							darken(mix($violet, $btn-secondary-color, 79%), 8%),
+							darken($violet, 8%)
+						);
+				}
+
+				&::before {
+					opacity: 0;
+				}
+			}
+
+			&.success {
+				.dropdown-toggle {
+					&,
+					&:hover {
+						background: darken($btn-success-color, 8%);
+					}
+				}
+			}
+		}
+
+		.dropdown-menu {
+			text-align: left;
+
+			.feedback {
+				color: $btn-success-color;
+			}
+		}
+
+		&:hover {
+			.dropdown-toggle:not(:disabled) {
+				&::before {
+					opacity: 0;
+				}
+			}
+		}
+
+		.btn:focus,
+		.btn:focus + .btn {
+			.keyboard-user & {
+				&::before {
+					opacity: 0;
+				}
+			}
+		}
+
+		.btn:active:not(:disabled),
+		.btn:active + .btn:not(:disabled) {
+			&::before {
+				opacity: 0;
+			}
+		}
+
+		&.success {
+			> .btn {
+				background: $btn-success-color;
+
+				&:hover {
+					background: lighten($btn-success-color, 4%);
+				}
+
+				&:active {
+					background: darken($btn-success-color, 8%);
+				}
+			}
+		}
+	}
+}

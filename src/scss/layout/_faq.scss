@@ -1,0 +1,101 @@
+//
+// FAQ
+//
+
+.back-link {
+	position: absolute;
+	left: $grid-gutter-width * 0.5;
+	top: $space-sm;
+
+	@media (max-width: $bp-md - 1px) {
+		left: 50%;
+		transform: translateX(-50%);
+	}
+}
+
+.faq {
+	height: auto;
+	margin-bottom: $section-padding-mobile;
+	font-size: 18px;
+
+	@media (min-width: $bp-md) {
+		margin-bottom: $section-padding;
+	}
+
+	h2,
+	h3 {
+		margin: 1em 0 27px;
+	}
+
+	h1 {
+		text-align: center;
+		margin-top: 67px; // Like optical padding-bottom on nav
+
+		@media (max-width: $bp-md - 1px) {
+			margin-top: 78px; // Like optical padding-bottom on nav
+		}
+	}
+
+	h2 {
+		margin-top: 1.8em;
+		font-size: 38px;
+	}
+
+	h3 {
+		margin-top: 2em;
+		font-weight: 600;
+		font-size: 24px;
+	}
+
+	nav {
+		text-align: center;
+		border-bottom: 1px solid $shade-2;
+		padding-bottom: $section-padding-mobile;
+		margin-bottom: $section-padding-mobile;
+
+		ul {
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
+
+		li {
+			margin-top: 1em;
+		}
+
+		@media (min-width: $bp-md) {
+			padding-bottom: $section-padding;
+			margin-bottom: $section-padding;
+
+			ul {
+				display: inline-flex;
+			}
+
+			li {
+				margin-top: 0;
+
+				& + li {
+					margin-left: $space-xl;
+				}
+			}
+		}
+
+		& + h2 {
+			margin-top: 0;
+		}
+	}
+
+	.anchor-link {
+		margin-left: $space-xs;
+		opacity: 0;
+		transition: opacity $link-transition;
+
+		&:hover {
+			text-decoration: none;
+		}
+	}
+
+	*:hover > .anchor-link {
+		opacity: 1;
+	}
+}

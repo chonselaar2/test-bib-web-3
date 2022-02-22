@@ -1,0 +1,32 @@
+//
+// Section cite
+//
+
+.section-cite {
+	border-top: none;
+	padding-top: $section-padding-mobile + 21px; // Distance to baseline meta-nav
+	position: relative;
+
+	@media (min-width: $bp-md) {
+		padding-top: $section-padding - 9px;
+	}
+
+	.meta-nav {
+		position: absolute;
+		right: $grid-gutter-width * 0.5;
+		top: $space-sm;
+		cursor: pointer;
+
+		a + a {
+			margin-left: $space-md;
+		}
+	}
+
+	.brand {
+		margin-bottom: $space-xl - 1px;
+
+		@media (min-width: $bp-md) {
+			margin-bottom: $space-xxl - 1px;
+		}
+	}
+}

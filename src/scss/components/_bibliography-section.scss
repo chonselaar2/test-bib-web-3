@@ -1,0 +1,216 @@
+//
+// Section bibliography
+//
+
+.section-bibliography {
+	text-align: center;
+
+	&.loading {
+		.spinner-container {
+			display: flex;
+			justify-content: center;
+			margin-top: $space-lg + 13px;
+		}
+
+		& ~ .section {
+			visibility: hidden;
+		}
+	}
+
+	.empty-bibliography {
+		width: 160px;
+		height: auto;
+		margin-bottom: $space-xl - 16px;
+
+		@media (min-width: $bp-md) {
+			width: auto;
+			margin-bottom: $space-xxl - 18px;
+		}
+	}
+
+	.empty-title {
+		margin-bottom: $lead-font-size-mobile * 0.5;
+
+		@media (min-width: $bp-md) {
+			margin-bottom: $lead-font-size * 0.5;
+		}
+	}
+
+	.empty-lead {
+		margin-bottom: -8px;
+
+		@media (min-width: $bp-md) {
+			margin-bottom: -10px;
+		}
+	}
+
+	.write & {
+		&:not(.empty) {
+			padding-top: $section-padding-mobile - 17px;
+
+			@media (min-width: $bp-md) {
+				padding-top: $section-padding - 22px;
+			}
+		}
+
+		.bibliography-title {
+			display: flex;
+			align-items: center;
+			transition: background-color $input-transition;
+			border-radius: $border-radius-sm;
+			margin-bottom: $space-xl - 12px;
+
+			@media (min-width: $bp-md) {
+				margin-bottom: $space-xxl - 18px;
+
+				&:hover {
+					background-color: $shade-1;
+					transition: background-color 0.15s 0.15s ease;
+				}
+			}
+
+			.input-group {
+				flex: 1 1 auto;
+			}
+
+			.editable {
+				@media (min-width: $bp-md) {
+					justify-content: center;
+				}
+			}
+
+			.editable-content {
+				line-height: $headings-line-height;
+				padding: 8px 0;
+				text-align: left;
+				word-wrap: break-word;
+
+				@media (min-width: $bp-md) {
+					text-align: inherit;
+				}
+			}
+
+			.editable-control {
+				border-width: 1px;
+				box-shadow: 0 0 0 2px $secondary;
+				line-height: normal; // Heading line-height would clip decenders
+				padding: 8px 0;
+				text-align: left;
+				margin: -5.5px;
+
+				@media (min-width: $bp-md) {
+					text-align: inherit;
+				}
+			}
+
+			.btn-icon {
+				flex: 0 0 auto;
+				margin-left: $space-sm;
+
+				@media (min-width: $bp-md) {
+					display: none;
+				}
+			}
+
+			.editing + .btn-icon {
+				display: none;
+			}
+		}
+	}
+
+	.style-selector {
+		text-align: left;
+
+		.select-component {
+			.select-control {
+				border-color: transparent;
+				background: $style-selector-bg;
+				color: $style-selector-color;
+				padding: $input-padding-y-lg $input-padding-x-lg;
+				border-radius: $input-border-radius-lg;
+				cursor: pointer;
+				transition:
+					background-color $input-transition,
+					border $input-transition,
+					box-shadow $input-transition;
+
+				&:hover {
+					background: $style-selector-hover-bg;
+				}
+			}
+
+			&.is-focused {
+				.select-control {
+					box-shadow: 0 0 0 2px $secondary;
+					outline: none;
+
+					&:hover {
+						box-shadow: 0 0 0 2px $style-selector-hover-bg;
+					}
+				}
+			}
+
+			&.single {
+				.select-value-label {
+					overflow: inherit;
+					text-overflow: inherit;
+					white-space: inherit;
+				}
+			}
+
+			.select-value {
+				position: static;
+				padding: 0;
+			}
+
+			.select-input {
+				position: absolute;
+			}
+
+			.select-arrow-container {
+				margin-right: 0;
+			}
+
+			.select-arrow {
+				background: image-url("bg-icons/16/chevron-11-down-light.svg");
+			}
+
+			.select-menu-outer {
+				padding: $space-xs 0;
+				left: 0;
+				right: 0;
+			}
+
+			.select-option:not(.select-divider) {
+				padding: $space-min $input-btn-padding-x-lg;
+
+				&:last-child {
+					color: $link-color;
+				}
+			}
+		}
+	}
+
+	.btn-edit-bibliography {
+		@media print {
+			display: none;
+		}
+	}
+
+	.read-only & {
+		border-top: none;
+		padding-top: $section-padding-mobile - 10px; // t height
+
+		@media (min-width: $bp-md) {
+			padding-top: $section-padding - 12px; // t height
+		}
+
+		.h2 {
+			margin-bottom: $space-xl - 17px;
+
+			@media (min-width: $bp-md) {
+				margin-bottom: ($space-xxl - 19px);
+			}
+		}
+	}
+}

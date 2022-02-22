@@ -1,0 +1,57 @@
+//
+// Base
+//
+
+* {
+	box-sizing: border-box;
+}
+
+// Do not remove the outline from checkboxes and radios
+a,
+li[tabindex] {
+	&:focus {
+		outline: none;
+		outline-offset: $outline-offset;
+
+		.keyboard-user & {
+			outline: $outline-width solid $outline-color;
+		}
+	}
+}
+
+[tabindex="-1"] {
+	&:focus {
+		outline: none;
+	}
+}
+
+::selection {
+	color: $shade-0;
+	background-color: $secondary;
+}
+
+html,
+body,
+main,
+.zotero-bib-container {
+	height: 100%; // Stretch for spinner
+}
+
+body {
+	min-width: $body-min-width;
+	color: $body-color;
+	background-color: $body-bg;
+}
+
+.zotero-bib-container {
+	&.loading {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		.icon-spin {
+			width: $zotero-bib-spinner-size;
+			height: $zotero-bib-spinner-size;
+		}
+	}
+}

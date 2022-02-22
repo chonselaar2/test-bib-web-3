@@ -1,0 +1,29 @@
+//
+// Cite tools
+//
+
+.cite-tools {
+	text-align: center;
+
+	.id-input-container {
+		display: flex;
+		margin-bottom: $space-lg;
+
+		@media (min-width: $bp-md) {
+			margin-bottom: $space-xl;
+		}
+	}
+
+	.input-group {
+		margin-right: $space-min;
+	}
+
+	.form-control {
+		transition: border $input-transition, box-shadow $input-transition, padding $input-transition;
+
+		&:focus {
+			padding-top: ($input-padding-y-lg - 2px);
+			padding-bottom: ($input-padding-y-lg - 2px);
+		}
+	}
+}

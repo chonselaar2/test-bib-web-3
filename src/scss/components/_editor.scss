@@ -1,0 +1,229 @@
+//
+// Editor
+//
+
+.editor {
+	.metadata-list {
+		margin: 0;
+		padding-left: 0;
+		list-style: none;
+	}
+
+	.metadata {
+		margin-bottom: $space-min;
+
+		@media (min-width: $bp-md) {
+			display: flex;
+		}
+
+		&.abstract,
+		&.extra {
+			margin-top: $space-lg;
+		}
+	}
+
+	.key {
+		display: flex;
+		color: $label-color;
+		margin-bottom: $space-min;
+		min-width: 0; // Fix truncation
+
+		@media (min-width: $bp-md) {
+			flex: 0 0 33%;
+			text-align: right;
+			padding-right: $space-xs;
+			margin-bottom: 0;
+		}
+
+		a {
+			color: $label-color;
+			text-decoration: none;
+
+			&[href]:hover {
+				color: $link-color;
+			}
+		}
+	}
+
+	.value {
+		display: flex;
+		min-width: 0; // Prevent overflow
+
+		@media (min-width: $bp-md) {
+			flex: 1 1 0;
+			padding-left: $space-xs;
+
+			> *:not(:first-child) {
+				margin-left: $space-min * 0.5;
+			}
+
+			> *:not(:last-child) {
+				margin-right: $space-min * 0.5;
+			}
+		}
+	}
+
+	.creators-entry {
+		.key {
+			@media (min-width: $bp-md) {
+				justify-content: flex-end;
+			}
+
+			.input-group {
+				flex: 0 0 auto;
+				max-width: 100%; // Fix truncation
+			}
+
+			.select-component {
+				&:hover {
+					.select-control {
+						color: $link-color;
+					}
+
+					.select-arrow {
+						background: url("/static/images/bg-icons/16/chevron-11-down-secondary.svg");
+					}
+				}
+
+				&.is-focused {
+					.select-control {
+						box-shadow: none;
+						color: $secondary;
+					}
+
+					.select-arrow {
+						background: url("/static/images/bg-icons/16/chevron-11-down-secondary.svg");
+					}
+				}
+
+				.select-control {
+					cursor: pointer;
+					border-color: transparent;
+					border-width: $input-border-width 0;
+					padding-left: 0;
+					padding-right: 0;
+
+					@media (min-width: $bp-md) {
+						justify-content: flex-end;
+					}
+				}
+
+				.select-multi-value-wrapper {
+					flex: 0 0 auto;
+					max-width: 100%; // Fix truncation
+				}
+
+				.select-value {
+					flex: 0 0 auto;
+					position: static;
+					padding: 0;
+					max-width: 100%; // Fix truncation
+				}
+
+				.select-input {
+					position: absolute;
+				}
+
+				.select-arrow-container {
+					@media (min-width: $bp-md) {
+						order: -1;
+						margin: 0;
+					}
+				}
+
+				.select-arrow {
+					margin-left: $space-min;
+					background: url("/static/images/bg-icons/16/chevron-11-down-777.svg");
+
+					@media (min-width: $bp-md) {
+						margin-left: 0;
+						margin-right: $space-min;
+					}
+				}
+
+				.select-menu-outer {
+					text-align: left;
+					width: auto;
+					white-space: nowrap;
+					right: auto;
+				}
+
+				.select-option:not(.select-divider) {
+					padding: $input-btn-padding-y-sm $input-btn-padding-x-lg;
+				}
+			}
+		}
+
+		.value {
+			flex-wrap: wrap;
+
+			@media (min-width: $bp-md) {
+				> *:not(:first-child) {
+					margin-left: $space-min * 0.5;
+				}
+
+				> *:not(:last-child) {
+					margin-right: $space-min * 0.5;
+				}
+			}
+
+			.input-group {
+				flex: 1 1 100%;
+				margin-bottom: $space-min;
+
+				@media (min-width: $bp-md) {
+					flex: 1 1 0;
+					margin-bottom: 0;
+				}
+			}
+
+			.btn-icon {
+				flex: 1 1 0;
+				border: $input-border-width solid $input-border-color;
+				margin-right: $space-min;
+
+				&:focus {
+					.keyboard-user & {
+						border: $input-border-width solid $input-focus-color;
+					}
+				}
+
+				&:last-child {
+					margin-right: 0;
+				}
+
+				@media (min-width: $bp-md) {
+					flex: 0 0 auto;
+					margin-right: $space-min * 0.5;
+
+					&:last-child {
+						margin-right: 0;
+					}
+				}
+			}
+		}
+	}
+
+	// Dev
+
+	label {
+		@include text-truncate;
+		flex: 1 1 0;
+		padding: ($input-btn-padding-y-sm + 1px) 0;
+
+		&[for="DOI"],
+		&[for="url"] {
+			overflow: inherit;
+			text-overflow: inherit;
+			white-space: inherit;
+			min-width: 0;
+
+			a {
+				@include text-truncate;
+				display: inline-block;
+				vertical-align: top; // Overflow hidden inline-block elements align with bottom margin
+				max-width: 100%;
+			}
+		}
+	}
+}

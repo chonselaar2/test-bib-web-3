@@ -1,0 +1,52 @@
+//
+// Permalink tools
+//
+
+.permalink-tools {
+	@media (min-width: $bp-md) {
+		display: flex;
+	}
+
+	&.loading {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: $space-xxl;
+	}
+
+	.icon-spin {
+		width: $permalink-spinner-size;
+		height: $permalink-spinner-size;
+	}
+
+	.btn {
+		flex: 1 1 0;
+
+		&:first-child {
+			margin-bottom: $space-md;
+
+			@media (min-width: $bp-md) {
+				margin-bottom: 0;
+				margin-right: $grid-gutter-width;
+			}
+		}
+
+		&.success {
+			background-color: $btn-success-color;
+
+			&:active {
+				background-color: darken($btn-success-color, 8%);
+			}
+
+			&:focus {
+				.keyboard-user & {
+					box-shadow: 0 0 0 $input-btn-focus-width $btn-success-color;
+
+					&:active {
+						box-shadow: 0 0 0 $input-btn-focus-width darken($btn-success-color, 8%);
+					}
+				}
+			}
+		}
+	}
+}

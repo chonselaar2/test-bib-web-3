@@ -1,0 +1,172 @@
+//
+// Button
+//
+
+.btn {
+	display: inline-block;
+	vertical-align: middle;
+	border: $btn-border-width solid transparent;
+	font-family: inherit;
+	font-size: $font-size-base;
+	line-height: $btn-line-height;
+	user-select: none;
+	white-space: nowrap;
+	text-align: center;
+	font-weight: 400;
+	border-radius: $btn-border-radius;
+	padding: $btn-padding-y $btn-padding-x;
+	margin: 0; // Remove margin in Safari
+	transition:
+		color $btn-transition,
+		background-color $btn-transition,
+		border-color $btn-transition,
+		box-shadow $btn-transition;
+
+	&:not(:disabled) {
+		cursor: pointer;
+	}
+
+	&:focus {
+		outline: none;
+	}
+
+	&[disabled] {
+		opacity: 0.5;
+	}
+}
+
+a.btn {
+	text-decoration: none;
+}
+
+.btn-xl {
+	font-size: $font-size-lg;
+	font-weight: 300;
+	padding: $btn-padding-y-xl $btn-padding-x-xl;
+	border-width: 2px;
+	letter-spacing: -0.01em;
+}
+
+.btn-lg {
+	font-size: $font-size-lg;
+	font-weight: 300;
+	padding: $btn-padding-y-lg $btn-padding-x-lg;
+	border-width: 2px;
+}
+
+.btn-sm {
+	padding: $btn-padding-y-sm $btn-padding-x-sm;
+}
+
+.btn-block {
+	display: block;
+	width: 100%;
+}
+
+.btn-min-width {
+	min-width: $space-max + $space-md;
+}
+
+.btn-primary {
+	@include button-variant($btn-primary-color);
+}
+
+.btn-secondary {
+	@include button-variant($btn-secondary-color);
+}
+
+.btn-light {
+	@include button-variant($btn-light-color);
+}
+
+.btn-outline-primary {
+	@include button-variant($btn-primary-color, $outline: true);
+}
+
+.btn-outline-secondary {
+	@include button-variant($btn-secondary-color, $outline: true);
+}
+
+.btn-outline-light {
+	@include button-variant($btn-light-color, $outline: true);
+}
+
+.btn-outline-inverse-error {
+	@include button-variant($btn-error-color, $outline: true, $inverse: true);
+}
+
+.btn-outline-inverse-warning {
+	@include button-variant($btn-warning-color, $outline: true, $inverse: true);
+}
+
+.btn-outline-inverse-info {
+	@include button-variant($btn-info-color, $outline: true, $inverse: true);
+}
+
+.btn-outline-inverse-success {
+	@include button-variant($btn-success-color, $outline: true, $inverse: true);
+}
+
+.btn-outline-inverse-blue-dark {
+	@include button-variant($blue-dark, $outline: true, $inverse: true);
+}
+
+.btn-icon {
+	position: relative;
+	width: $btn-icon-size;
+	height: $btn-icon-size;
+	padding: 0;
+	line-height: 1;
+	background-color: $btn-icon-bg;
+
+	&:focus {
+		.keyboard-user & {
+			border-color: $btn-secondary-color;
+			box-shadow: 0 0 0 $input-btn-focus-width $btn-secondary-color;
+
+			&:active {
+				border-color: darken($btn-secondary-color, 8%);
+			}
+		}
+	}
+
+	.icon {
+		position: absolute; // Flexbox in buttons doesn’t work yet in all browsers
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		transition: color $btn-transition;
+	}
+
+	&:active:not(:disabled) {
+		.icon {
+			color: $shade-7;
+		}
+	}
+}
+
+.btn-group {
+	display: inline-flex;
+
+	> .btn {
+		position: relative;
+
+		&:focus {
+			z-index: 1;
+		}
+
+		&:hover {
+			z-index: 2;
+		}
+	}
+
+	> .btn:not(:first-of-type) {
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+	}
+
+	> .btn:not(:last-of-type) {
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
+	}
+}

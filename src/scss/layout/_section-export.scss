@@ -1,0 +1,25 @@
+//
+// Section export
+//
+
+.section-export {
+	text-align: center;
+
+	@media print {
+		display: none;
+	}
+
+	.write & {
+		padding-top: $section-padding-mobile - 10px; // t height
+
+		@media (min-width: $bp-md) {
+			padding-top: $section-padding - 12px; // t height
+		}
+	}
+
+	.read-only & {
+		h2 {
+			display: none;
+		}
+	}
+}

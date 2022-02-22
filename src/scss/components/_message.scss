@@ -1,0 +1,105 @@
+//
+// Error message
+//
+
+.message {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	color: $message-color;
+	padding: $space-xl ($grid-gutter-width * 0.5);
+	text-align: center;
+	font-size: $message-font-size-mobile;
+	font-weight: 300;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+
+	@media (min-width: $bp-md) {
+		flex-direction: row;
+		font-size: $message-font-size;
+		line-height: $line-height-base + 0.1;
+		padding: ($space-xxl - 11px) ($grid-gutter-width * 0.5) ($space-xxl - 11px) 92px;
+
+		&::before {
+			content: ""; // Center/right justification hack
+		}
+	}
+
+	@media print {
+		display: none;
+	}
+
+	.text {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin: 0;
+		margin-top: 3px;
+		margin-bottom: -8px;
+
+		@media (min-width: $bp-md) {
+			display: block;
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+	}
+
+	.close {
+		flex: 0 0 auto;
+		order: -1;
+		width: $space-xxl;
+		height: $space-xxl;
+		margin-top: -16px;
+
+		@media (min-width: $bp-md) {
+			order: 0;
+			width: $space-xxxl;
+			height: $space-xxxl;
+			margin: (-$space-xl * 0.5) $space-sm (-$space-xl * 0.5) 0;
+		}
+
+		&:focus {
+			.keyboard-user & {
+				border-color: $message-focus-color;
+				box-shadow: 0 0 0 $input-btn-focus-width $message-focus-color;
+			}
+		}
+
+		.icon {
+			color: $message-color;
+		}
+
+		&:active {
+			.icon {
+				color: $message-color;
+			}
+		}
+	}
+
+	.btn:not(.btn-icon) {
+		margin-top: $space-xl - 8px;
+		margin-bottom: 8px;
+
+		@media (min-width: $bp-md) {
+			margin: -1em 0 -1em $space-lg;
+			vertical-align: 2px;
+		}
+	}
+
+	&.error {
+		background: $message-error-bg;
+	}
+
+	&.warning {
+		background: $message-warning-bg;
+	}
+
+	&.info {
+		background: $message-info-bg;
+	}
+
+	&.success {
+		background: $message-success-bg;
+	}
+}

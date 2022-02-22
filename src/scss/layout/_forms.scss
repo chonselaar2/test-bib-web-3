@@ -1,0 +1,151 @@
+//
+// Forms
+//
+
+::placeholder {
+	color: $placeholder-color;
+	opacity: 1; // Set opacity for Firefox
+}
+
+::-ms-clear {
+	display: none; // Hide non-standard clear button in IE and Edge
+}
+
+.form-row {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 (-$form-gutter-width * 0.5);
+
+	> [class*=col-] {
+		padding: 0 ($form-gutter-width * 0.5);
+	}
+
+	.col-xs-6 {
+		flex: 0 0 50%;
+		max-width: 50%;
+	}
+}
+
+.form-group {
+	margin-bottom: $space-sm;
+
+	&.compact {
+		margin-bottom: $space-min;
+	}
+}
+
+.input-group {
+	position: relative;
+	min-width: 0; // Needed for react-select inside
+
+	.icon-spin {
+		position: absolute;
+	}
+
+	.form-control-lg + .icon-spin {
+		width: $space-lg;
+		height: $space-lg;
+		top: $space-sm;
+		right: $space-md + $input-border-width;
+	}
+
+	.form-control-sm {
+		& + .icon-spin {
+			width: $space-md;
+			height: $space-md;
+			top: $space-xs;
+			right: $input-btn-padding-x-sm + $input-border-width;
+		}
+
+		&.select-component + .icon-spin {
+			right:
+				$input-btn-padding-x-sm
+				+ $input-border-width
+				+ $space-md
+				+ $space-min;
+		}
+	}
+}
+
+.form-control {
+	display: block;
+	width: 100%;
+	border: $input-border-width solid $input-border-color;
+	line-height: $input-line-height;
+	font-size: inherit;
+	font-family: inherit;
+	color: inherit;
+	// todo: padding
+	border-radius: $input-border-radius;
+	transition: border $input-transition, box-shadow $input-transition, padding $input-transition;
+	margin: 0; // Remove margin in Safari
+	background-clip: padding-box; // Remove inner shadow on iOS
+
+	&:focus {
+		border: $input-border-width solid $input-focus-color;
+		box-shadow: 0 0 0 2px $secondary;
+		outline: none;
+	}
+}
+
+.form-control-lg {
+	padding: $input-padding-y-lg $input-padding-x-lg;
+	border-radius: $input-border-radius-lg;
+
+	.busy & {
+		&:not(.select-component) {
+			padding-right: $input-padding-x-lg + $space-lg + 1px;
+		}
+	}
+
+	&.select-component {
+		padding: 0;
+		border: none;
+
+		.select-control {
+			padding: $input-padding-y-lg $input-padding-x-lg;
+		}
+	}
+}
+
+.form-control-sm {
+	padding: $input-btn-padding-y-sm $input-btn-padding-x-sm;
+
+	.busy & {
+		&:not(.select-component) {
+			padding-right: $input-btn-padding-x-sm + $space-md + 1px;
+		}
+	}
+
+	&.select-component {
+		padding: 0;
+		border: none;
+
+		.select-control {
+			padding: $input-btn-padding-y-sm $input-btn-padding-x-sm;
+		}
+	}
+}
+
+textarea {
+	overflow: auto;
+	resize: vertical;
+}
+
+label {
+	display: inline-block;
+}
+
+.checkbox,
+.radio {
+	padding: ($input-btn-padding-y-sm + 1px) 0;
+
+	label {
+		display: flex;
+	}
+
+	[type] {
+		font-size: inherit;
+		margin: $space-min ($space-min + $space-min * 0.5) 0 0;
+	}
+}
